@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from fastapi.security import OAuth2PasswordRequestForm
 from pydantic import EmailStr
 
-from server.app.db import get_db
+from app.db import get_db
 from app.services.auth_service import (
     register_user,
     login_user,

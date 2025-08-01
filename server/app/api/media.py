@@ -4,7 +4,7 @@ from sqlalchemy.future import select
 from uuid import UUID
 from typing import Optional, List
 
-from server.app.db import get_db
+from app.db import get_db
 from app.schemas.media import MediaOut
 from app.services.media_service import save_media, delete_media
 from app.core.security import get_current_user

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
-from server.app.db import get_db
+from app.db import get_db
 from app.schemas.comment import CommentCreate, CommentOut
 from app.services.comment_service import create_comment, get_comments_by_report
 from app.core.security import get_current_user

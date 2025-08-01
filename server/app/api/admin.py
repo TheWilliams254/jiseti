@@ -6,7 +6,7 @@ from sqlalchemy.future import select
 from typing import List
 from uuid import UUID
 
-from server.app.db import get_db
+from app.db import get_db
 from app.models.user import User
 from app.models.report import Report, ReportStatus # Keep ReportStatus for validation if needed
 from app.schemas.user import UserOut as UserSchema

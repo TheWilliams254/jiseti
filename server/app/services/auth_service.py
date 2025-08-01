@@ -100,7 +100,7 @@ from app.schemas.user import UserCreate, UserOut # <--- ADDED UserOut IMPORT HER
 from app.models.user import User
 from app.core.config.settings import settings
 from sqlalchemy import text
-from server.app.db import async_engine
+from app.db import async_engine
 
 
 async def register_user(user: UserCreate, db: AsyncSession):

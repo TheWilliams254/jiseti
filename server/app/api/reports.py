@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from uuid import UUID
 from typing import List
 
-from server.app.db import get_db
+from app.db import get_db
 from app.schemas.report import (
     ReportCreate, ReportOut, ReportUpdate, LocationUpdate
 )

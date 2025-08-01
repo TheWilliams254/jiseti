@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.schemas.notification import NotificationCreate, NotificationOut
 from app.services.notification_service import create_notification, get_notifications_for_user
-from server.app.db import get_db
+from app.db import get_db
 from typing import List
 from uuid import UUID
 
