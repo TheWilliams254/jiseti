@@ -1,11 +1,17 @@
-from sqlalchemy import String, ForeignKey, Boolean, DateTime
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from __future__ import annotations
+
 from datetime import datetime
 from uuid import UUID, uuid4
+from typing import TYPE_CHECKING
+
+from sqlalchemy import String, ForeignKey, Boolean, DateTime
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db import Base
-from app.models.user import User
-from app.models.report import Report
+
+if TYPE_CHECKING:
+    from app.models.user import User
+    from app.models.report import Report
 
 
 class Notification(Base):
@@ -13,7 +19,7 @@ class Notification(Base):
 
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
     message: Mapped[str] = mapped_column(String)
-    type: Mapped[str] = mapped_column(String(10))  
+    type: Mapped[str] = mapped_column(String(10))  # e.g., "email", "sms", etc.
     sent: Mapped[bool] = mapped_column(Boolean, default=False)
 
     user_id: Mapped[UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"))

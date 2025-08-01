@@ -1,16 +1,21 @@
+from __future__ import annotations
+
 import uuid
 import datetime
-from typing import List
-from typing import TYPE_CHECKING
+import enum
+from typing import List, TYPE_CHECKING
 
-from sqlalchemy import ForeignKey, Text, String, Float
+from sqlalchemy import (
+    ForeignKey,
+    Text,
+    String,
+    Float,
+    Enum as PgEnum,
+    DateTime
+)
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import Enum as PgEnum
-
 
 from app.db import Base
-
-import enum
 
 if TYPE_CHECKING:
     from app.models.user import User
@@ -19,12 +24,12 @@ if TYPE_CHECKING:
     from app.models.notification import Notification
 
 
-class RecordType(str, enum.Enum):
+class RecordType(enum.Enum):
     RED_FLAG = "red-flag"
     INTERVENTION = "intervention"
 
 
-class ReportStatus(str, enum.Enum):
+class ReportStatus(enum.Enum):
     DRAFT = "draft"
     UNDER_INVESTIGATION = "under-investigation"
     REJECTED = "rejected"
@@ -41,13 +46,13 @@ class Report(Base):
     location: Mapped[str] = mapped_column(String(255), nullable=False)
     latitude: Mapped[float] = mapped_column(Float, nullable=False)
     longitude: Mapped[float] = mapped_column(Float, nullable=False)
-
-    status: Mapped[ReportStatus] = mapped_column(PgEnum(ReportStatus, name="reportstatus"), default=ReportStatus.DRAFT)
-
-    created_at: Mapped[datetime.datetime] = mapped_column(
-        default=datetime.datetime.utcnow
+    status: Mapped[ReportStatus] = mapped_column(
+        PgEnum(ReportStatus, name="reportstatus"),
+        default=ReportStatus.DRAFT
     )
+    created_at: Mapped[datetime.datetime] = mapped_column(DateTime, default=datetime.datetime.utcnow)
     updated_at: Mapped[datetime.datetime] = mapped_column(
+        DateTime,
         default=datetime.datetime.utcnow,
         onupdate=datetime.datetime.utcnow
     )
@@ -62,5 +67,5 @@ class Report(Base):
         "Notification", back_populates="report", cascade="all, delete-orphan"
     )
     media: Mapped[List["Media"]] = relationship(
-        back_populates="report", cascade="all, delete", lazy="selectin"
+        "Media", back_populates="report", cascade="all, delete", lazy="selectin"
     )
