@@ -59,7 +59,7 @@ def confirm_verify_token(token: str) -> Optional[str]:
 # =================== Authenticated User Dependency ===================
 
 async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)):
-    from server.app.db import get_db
+    from app.db import get_db
     from app.models.user import User
 
     token = credentials.credentials
