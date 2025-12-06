@@ -21,6 +21,7 @@ from app.utils.email_utils import send_email
 app = FastAPI()
 
 # CORS configuration
+#Cross Origin Resource Sharing
 # origins = [os.getenv("FRONTEND_URL", "http://127.0.0.1:5173")]
 app.add_middleware(
     CORSMiddleware,
