@@ -77,24 +77,3 @@ This README was written for team collaboration in Canvas and supports easy editi
 
 If you're using this in GitHub, commit often and tag pull requests with the correct feature (feature/post-form, fix/admin-route, etc.).
 
-
-## env 
-DATABASE_URL=postgresql+asyncpg://jiseti_y5mv_user:GN2cQ6RN8cYRkuaPZ8fHaUzt2aHMRten@dpg-d248n43uibrs73accdo0-a.oregon-postgres.render.com/jiseti_y5mv
-SECRET_KEY=b845ec805d7f8d9ab9d749ba56e3706331671755de918c55eb5b960ba130144f
-
-
-FRONTEND_URL=http://localhost:5173
-
-MAIL_USERNAME=ec9416d7c956fe
-MAIL_PASSWORD=59fcfe7247e747
-MAIL_FROM="Magic Elves <from@example.com>"
-MAIL_PORT=2525
-MAIL_SERVER=sandbox.smtp.mailtrap.io
-MAIL_FROM_NAME="Magic Elves"
-MAIL_STARTTLS=True
-MAIL_SSL_TLS=False
-USE_CREDENTIALS=True
-VALIDATE_CERTS=True
-
-TEST_RECEIVER_EMAIL=to@example.com  # can be any valid format for Mailtrap
-
